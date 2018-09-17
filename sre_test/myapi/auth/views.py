@@ -1,4 +1,6 @@
 from flask import request, jsonify, Blueprint, current_app as app
+from flask import Flask
+
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -16,8 +18,16 @@ from myapi.auth.helpers import (
     add_token_to_database
 )
 
+healthcheck = Flask('healthcheck')
+
+# healthcheck = Blueprint('healthcheck', __name__, url_prefix='/healthcheck')
 
 blueprint = Blueprint('auth', __name__, url_prefix='/auth')
+
+
+@healthcheck.route('/healthcheck', methods=['GET'])
+def healthcheck():
+    return 'A-Ok!'
 
 
 @blueprint.route('/login', methods=['POST'])
