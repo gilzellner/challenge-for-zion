@@ -1,0 +1,3 @@
+*.pyc
+.idea/*
+sre_test/.pytest_cache/*
