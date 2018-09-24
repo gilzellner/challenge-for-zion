@@ -17,14 +17,14 @@ from myapi.auth.helpers import (
     add_token_to_database
 )
 
-healthcheck = Blueprint('healthcheck', __name__, url_prefix='/healthcheck')
-
 blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@healthcheck.route('/healthcheck', methods=['POST'])
+@blueprint.route('/healthcheck', methods=['GET'])
 def healthcheck():
-    return 'A-Ok!'
+    """Authenticate user and return token
+    """
+    return 'A-Ok!', 200
 
 
 @blueprint.route('/login', methods=['POST'])
