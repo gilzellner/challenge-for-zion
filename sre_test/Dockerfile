@@ -8,4 +8,4 @@ WORKDIR /app
 RUN pip install .
 RUN pip install -r requirements.txt
 RUN myapi init
-ENTRYPOINT ["run.sh"]
+ENTRYPOINT ["/usr/local/bin/flask","run"]
